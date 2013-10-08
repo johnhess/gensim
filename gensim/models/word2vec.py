@@ -406,7 +406,7 @@ class BrownCorpus(object):
                 # each token is WORD/POS_TAG
                 token_tags = [t.split('/') for t in line.split() if len(t.split('/')) == 2]
                 # ignore words with non-alphabetic tags like ",", "!" etc (punctuation, weird stuff)
-                words = ["%s/%s" % (token.lower(), tag[:2]) for token, tag in token_tags if tag[:2].isalpha()]
+                words = [token.lower() for token, tag in token_tags if tag[:2].isalpha()]
                 if not words:  # don't bother sending out empty sentences
                     continue
                 yield words
